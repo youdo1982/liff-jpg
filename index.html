@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>推薦好友</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <script>
+    liff.init({ liffId: "2007690961-xMW9ZN6D" }) // 替換成你的 LIFF ID
+      .then(() => {
+        return liff.shareTargetPicker([
+          {
+            type: "flex",
+            altText: "推薦你一位舒緩酸痛小幫手！",
+            contents: {
+              type: "bubble",
+              hero: {
+                type: "image",
+                url: "https://raw.githubusercontent.com/youdo1982/liff-jpg/main/yd.jpg",  // 確保你圖片名稱是這個
+                size: "full",
+                aspectRatio: "1:1",
+                aspectMode: "cover"
+              },
+              body: {
+                type: "box",
+                layout: "vertical",
+                spacing: "md",
+                contents: [
+                  {
+                    type: "text",
+                    text: "Dear 推薦你一位舒緩酸痛小幫手！",
+                    wrap: true,
+                    weight: "bold",
+                    size: "md"
+                  },
+                  {
+                    type: "button",
+                    style: "primary",
+                    color: "#06C755",
+                    action: {
+                      type: "uri",
+                      label: "👉 點我加好友",
+                      uri: "https://line.me/R/ti/p/@080rulul"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]);
+      })
+      .then(() => {
+        liff.closeWindow();
+      })
+      .catch((err) => {
+        alert("分享失敗：" + err);
+      });
+  </script>
+</body>
+</html>
